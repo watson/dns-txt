@@ -24,7 +24,7 @@ var obj = {
 
 var enc = txt.encode(obj) // <Buffer 05 66 6f 6f 3d 31 05 62 61 72 3d 32>
 
-txt.decode(encoded) // { foo: <Buffer 31>, bar: <Buffer 32> }
+txt.decode(enc) // { foo: <Buffer 31>, bar: <Buffer 32> }
 ```
 
 ## API
