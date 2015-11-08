@@ -50,12 +50,18 @@ following in rules in mind:
   specified in [section
   6.5](https://tools.ietf.org/html/rfc6763#section-6.5).
 
+After encoding `.encode.bytes` is set to the amount of bytes used to
+encode the object.
+
 ### `.decode(buffer, [offset])`
 
 Takes a buffer and returns a decoded key/value object. If an offset is
 passed as the second argument the object should be decoded from that
 byte offset. The byte offset defaults to `0`. Note that all keys will be
 lowercased and all values will be Buffer objects.
+
+After decoding `.decode.bytes` is set to the amount of bytes used to
+decode the object.
 
 ### `.encodingLength(obj)`
 
