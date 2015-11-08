@@ -65,7 +65,6 @@ exports.encodingLength = function (data) {
   if (!data) return 1 // 1 byte (single empty byte)
   var keys = Object.keys(data)
   if (keys.length === 0) return 1 // 1 byte (single empty byte)
-  var used = {}
   return keys.reduce(function (total, key) {
     var val = data[key]
     total += Buffer.byteLength(key) + 1 // +1 byte to store field length
