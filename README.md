@@ -31,10 +31,13 @@ txt.decode(enc) // { foo: <Buffer 31>, bar: <Buffer 32> }
 
 The encoder and decoder conforms to [RFC 6763](https://tools.ietf.org/html/rfc6763).
 
-### `.encode(obj)`
+### `.encode(obj, [buffer], [offset])`
 
-Takes a single key/value object and returns a buffer with the encoded
-TXT record.
+Takes a key/value object and returns a buffer with the encoded TXT
+record. If a buffer is passed as the second argument the object should
+be encoded into that buffer. Otherwise a new buffer should be allocated
+If an offset is passed as the third argument the object should be
+encoded at that byte offset. The byte offset defaults to `0`.
 
 This module does not actively validate the key/value pairs, but keep the
 following in rules in mind:
@@ -47,10 +50,12 @@ following in rules in mind:
   specified in [section
   6.5](https://tools.ietf.org/html/rfc6763#section-6.5).
 
-### `.decode(buffer)`
+### `.decode(buffer, [offset])`
 
-Takes a single buffer and returns a decoded key/value object. Note that
-all keys will be lowercased and all values will be Buffer objects.
+Takes a buffer and returns a decoded key/value object. If an offset is
+passed as the second argument the object should be decoded from that
+byte offset. The byte offset defaults to `0`. Note that all keys will be
+lowercased and all values will be Buffer objects.
 
 ### `.encodingLength(obj)`
 

@@ -25,6 +25,7 @@ test('encode', function (t) {
                             '04' + '626f6f6c' +
                             '0a' + '627566666572' + '3d' + '626172', 'hex')
   t.deepEqual(buf, expected)
+  t.equal(txt.encode.bytes, expected.length)
   t.end()
 })
 
@@ -32,6 +33,7 @@ test('encode - empty', function (t) {
   var buf = txt.encode({})
   var expected = new Buffer('00', 'hex')
   t.deepEqual(buf, expected)
+  t.equal(txt.encode.bytes, expected.length)
   t.end()
 })
 
@@ -39,11 +41,33 @@ test('encode - undefined', function (t) {
   var buf = txt.encode()
   var expected = new Buffer('00', 'hex')
   t.deepEqual(buf, expected)
+  t.equal(txt.encode.bytes, expected.length)
+  t.end()
+})
+
+test('encode - with buffer', function (t) {
+  var buf = new Buffer(3)
+  buf.fill(255)
+  txt.encode({}, buf)
+  var expected = new Buffer('00ffff', 'hex')
+  t.deepEqual(buf, expected)
+  t.equal(txt.encode.bytes, 1)
+  t.end()
+})
+
+test('encode - with buffer and offset', function (t) {
+  var buf = new Buffer(3)
+  buf.fill(255)
+  txt.encode({}, buf, 1)
+  var expected = new Buffer('ff00ff', 'hex')
+  t.deepEqual(buf, expected)
+  t.equal(txt.encode.bytes, 1)
   t.end()
 })
 
 test('decode', function (t) {
-  var result = txt.decode(txt.encode(obj))
+  var encoded = txt.encode(obj)
+  var result = txt.decode(encoded)
   var expected = {
     string: new Buffer('foo'),
     number: new Buffer('42'),
@@ -52,6 +76,7 @@ test('decode', function (t) {
     buffer: new Buffer('bar')
   }
   t.deepEqual(result, expected)
+  t.equal(txt.decode.bytes, encoded.length)
   t.end()
 })
 
@@ -63,13 +88,25 @@ test('decode - duplicate', function (t) {
   var expected = {
     foo: new Buffer('bar')
   }
-  var result = txt.decode(txt.encode(orig))
+  var encoded = txt.encode(orig)
+  var result = txt.decode(encoded)
   t.deepEqual(result, expected)
+  t.equal(txt.decode.bytes, encoded.length)
   t.end()
 })
 
 test('decode - single zero bype', function (t) {
-  var result = txt.decode(new Buffer('00', 'hex'))
+  var encoded = new Buffer('00', 'hex')
+  var result = txt.decode(encoded)
   t.deepEqual(result, {})
+  t.equal(txt.decode.bytes, encoded.length)
+  t.end()
+})
+
+test('decode - with offset', function (t) {
+  var encoded = new Buffer('012300', 'hex')
+  var result = txt.decode(encoded, 2)
+  t.deepEqual(result, {})
+  t.equal(txt.decode.bytes, 1)
   t.end()
 })

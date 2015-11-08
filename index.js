@@ -4,11 +4,12 @@ var bindexOf = require('buffer-indexof')
 
 var equalSign = new Buffer('=')
 
-exports.encode = function (data) {
-  var buf = new Buffer(exports.encodingLength(data))
-  var offset = 0
-
+exports.encode = function (data, buf, offset) {
   if (!data) data = {}
+  if (!offset) offset = 0
+  if (!buf) buf = new Buffer(exports.encodingLength(data) + offset)
+
+  var oldOffset = offset
   var keys = Object.keys(data)
 
   if (keys.length === 0) {
@@ -35,12 +36,14 @@ exports.encode = function (data) {
     buf[oldOffset] = offset - oldOffset - 1
   })
 
+  exports.encode.bytes = offset - oldOffset
   return buf
 }
 
-exports.decode = function (buf) {
+exports.decode = function (buf, offset) {
+  if (!offset) offset = 0
   var data = {}
-  var offset = 0
+  var oldOffset = offset
   var len = buf.length
 
   while (offset < len) {
@@ -58,6 +61,7 @@ exports.decode = function (buf) {
     }
   }
 
+  exports.decode.bytes = offset - oldOffset
   return data
 }
 
