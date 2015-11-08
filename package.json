@@ -1,6 +1,6 @@
 {
   "name": "mdns-txt",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Encode/decode mDNS TXT records",
   "main": "index.js",
   "dependencies": {
@@ -41,5 +41,9 @@
   "bugs": {
     "url": "https://github.com/watson/mdns-txt/issues"
   },
-  "homepage": "https://github.com/watson/mdns-txt"
+  "homepage": "https://github.com/watson/mdns-txt",
+  "coordinates": [
+    60.2016461,
+    24.9573858
+  ]
 }
