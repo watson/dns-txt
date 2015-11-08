@@ -6,6 +6,7 @@ var txt = require('./')
 var obj = {
   String: 'foo',
   number: 42,
+  empty: '',
   null: null,
   bool: true,
   buffer: new Buffer('bar')
@@ -13,7 +14,7 @@ var obj = {
 
 test('encodingLength', function (t) {
   var len = txt.encodingLength(obj)
-  t.equal(len, 47)
+  t.equal(len, 54)
   t.end()
 })
 
@@ -21,6 +22,7 @@ test('encode', function (t) {
   var buf = txt.encode(obj)
   var expected = new Buffer('0a' + '537472696e67' + '3d' + '666f6f' +
                             '09' + '6e756d626572' + '3d' + '3432' +
+                            '06' + '656d707479' + '3d' +
                             '09' + '6e756c6c' + '3d' + '6e756c6c' +
                             '04' + '626f6f6c' +
                             '0a' + '627566666572' + '3d' + '626172', 'hex')
@@ -71,6 +73,7 @@ test('decode', function (t) {
   var expected = {
     string: new Buffer('foo'),
     number: new Buffer('42'),
+    empty: new Buffer(0),
     null: new Buffer('null'),
     bool: true,
     buffer: new Buffer('bar')
