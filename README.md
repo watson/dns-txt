@@ -1,7 +1,8 @@
 # mdns-txt
 
-Encode or decode multicast DNS TXT records. For use with DNS-Based
-Service Discovery. For details see [RFC 6763](https://tools.ietf.org/html/rfc6763).
+Encode or decode the RDATA field in multicast DNS TXT records. For use
+with DNS-Based Service Discovery. For details see [RFC
+6763](https://tools.ietf.org/html/rfc6763).
 
 [![Build status](https://travis-ci.org/watson/mdns-txt.svg?branch=master)](https://travis-ci.org/watson/mdns-txt)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)

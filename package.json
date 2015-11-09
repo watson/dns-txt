@@ -1,7 +1,7 @@
 {
   "name": "mdns-txt",
   "version": "1.0.0",
-  "description": "Encode/decode mDNS TXT records",
+  "description": "Encode/decode mDNS TXT record RDATA fields",
   "main": "index.js",
   "dependencies": {
     "buffer-indexof": "^1.0.0"
@@ -26,6 +26,7 @@
     "mdns",
     "multicast",
     "txt",
+    "rdata",
     "dns-sd",
     "encode",
     "decode",
