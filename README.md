@@ -49,7 +49,7 @@ The options are:
   according to the RFC the values can be any binary data. If you expect
   binary data, use this option.
 
-#### `.encode(obj, [buffer], [offset])`
+#### `txt.encode(obj, [buffer], [offset])`
 
 Takes a key/value object and returns a buffer with the encoded TXT
 record. If a buffer is passed as the second argument the object should
@@ -68,20 +68,20 @@ following in rules in mind:
   specified in [section
   6.5](https://tools.ietf.org/html/rfc6763#section-6.5).
 
-After encoding `.encode.bytes` is set to the amount of bytes used to
+After encoding `txt.encode.bytes` is set to the amount of bytes used to
 encode the object.
 
-### `.decode(buffer, [offset], [length])`
+#### `txt.decode(buffer, [offset], [length])`
 
 Takes a buffer and returns a decoded key/value object. If an offset is
 passed as the second argument the object should be decoded from that
 byte offset. The byte offset defaults to `0`. Note that all keys will be
 lowercased and all values will be Buffer objects.
 
-After decoding `.decode.bytes` is set to the amount of bytes used to
+After decoding `txt.decode.bytes` is set to the amount of bytes used to
 decode the object.
 
-### `.encodingLength(obj)`
+#### `txt.encodingLength(obj)`
 
 Takes a single key/value object and returns the number of bytes that the given
 object would require if encoded.
