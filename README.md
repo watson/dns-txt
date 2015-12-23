@@ -17,7 +17,7 @@ npm install mdns-txt
 ## Usage
 
 ```js
-var txt = require('mdns-txt')
+var txt = require('mdns-txt')()
 
 var obj = {
   foo: 1,
@@ -26,14 +26,30 @@ var obj = {
 
 var enc = txt.encode(obj) // <Buffer 05 66 6f 6f 3d 31 05 62 61 72 3d 32>
 
-txt.decode(enc) // { foo: <Buffer 31>, bar: <Buffer 32> }
+txt.decode(enc) // { foo: '1', bar: '2' }
 ```
 
 ## API
 
 The encoder and decoder conforms to [RFC 6763](https://tools.ietf.org/html/rfc6763).
 
-### `.encode(obj, [buffer], [offset])`
+### Initialize
+
+The module exposes a constructor function which can be called with an
+optional options object:
+
+```js
+var txt = require('mdns-txt')({ binary: true })
+```
+
+The options are:
+
+- `binary` - If set to `true` all values will be returned as `Buffer`
+  objects. The default behavior is to turn all values into strings. But
+  according to the RFC the values can be any binary data. If you expect
+  binary data, use this option.
+
+#### `.encode(obj, [buffer], [offset])`
 
 Takes a key/value object and returns a buffer with the encoded TXT
 record. If a buffer is passed as the second argument the object should
