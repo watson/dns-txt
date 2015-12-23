@@ -1,6 +1,6 @@
 {
   "name": "mdns-txt",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Encode/decode mDNS TXT record RDATA fields",
   "main": "index.js",
   "dependencies": {
@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/watson/mdns-txt",
   "coordinates": [
-    60.2016461,
-    24.9573858
+    55.6877559,
+    12.595542
   ]
 }
