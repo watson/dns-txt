@@ -40,11 +40,11 @@ exports.encode = function (data, buf, offset) {
   return buf
 }
 
-exports.decode = function (buf, offset) {
+exports.decode = function (buf, offset, len) {
   if (!offset) offset = 0
+  if (!Number.isFinite(len)) len = buf.length
   var data = {}
   var oldOffset = offset
-  var len = buf.length
 
   while (offset < len) {
     var b = decodeBlock(buf, offset)

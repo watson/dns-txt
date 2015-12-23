@@ -54,7 +54,7 @@ following in rules in mind:
 After encoding `.encode.bytes` is set to the amount of bytes used to
 encode the object.
 
-### `.decode(buffer, [offset])`
+### `.decode(buffer, [offset], [length])`
 
 Takes a buffer and returns a decoded key/value object. If an offset is
 passed as the second argument the object should be decoded from that
