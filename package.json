@@ -1,7 +1,7 @@
 {
-  "name": "mdns-txt",
+  "name": "dns-txt",
   "version": "2.0.0",
-  "description": "Encode/decode mDNS TXT record RDATA fields",
+  "description": "Encode/decode DNS-SD TXT record RDATA fields",
   "main": "index.js",
   "dependencies": {
     "buffer-indexof": "^1.0.0"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson/mdns-txt.git"
+    "url": "https://github.com/watson/dns-txt.git"
   },
   "keywords": [
     "rfc6763",
@@ -40,9 +40,9 @@
   "author": "Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/watson/mdns-txt/issues"
+    "url": "https://github.com/watson/dns-txt/issues"
   },
-  "homepage": "https://github.com/watson/mdns-txt",
+  "homepage": "https://github.com/watson/dns-txt",
   "coordinates": [
     55.6877559,
     12.595542

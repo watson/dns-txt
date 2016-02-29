@@ -1,23 +1,23 @@
-# mdns-txt
+# dns-txt
 
 Encode or decode the RDATA field in multicast DNS TXT records. For use
 with DNS-Based Service Discovery. For details see [RFC
 6763](https://tools.ietf.org/html/rfc6763).
 
-[![Build status](https://travis-ci.org/watson/mdns-txt.svg?branch=master)](https://travis-ci.org/watson/mdns-txt)
+[![Build status](https://travis-ci.org/watson/dns-txt.svg?branch=master)](https://travis-ci.org/watson/dns-txt)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 [![abstract-encoding](https://img.shields.io/badge/abstract--encoding-compliant-brightgreen.svg?style=flat)](https://github.com/mafintosh/abstract-encoding)
 
 ## Installation
 
 ```
-npm install mdns-txt
+npm install dns-txt
 ```
 
 ## Usage
 
 ```js
-var txt = require('mdns-txt')()
+var txt = require('dns-txt')()
 
 var obj = {
   foo: 1,
@@ -39,7 +39,7 @@ The module exposes a constructor function which can be called with an
 optional options object:
 
 ```js
-var txt = require('mdns-txt')({ binary: true })
+var txt = require('dns-txt')({ binary: true })
 ```
 
 The options are:
