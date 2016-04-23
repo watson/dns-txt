@@ -130,3 +130,31 @@ test('decode - with offset', function (t) {
   t.equal(txtBin.decode.bytes, 1)
   t.end()
 })
+
+test('decode - exactly 256 bytes', function (t) {
+  var expected = { foo: '' }
+  var maxLength = Object.keys(expected).reduce(function (total, key) {
+    return total - key.length - 1 // - 1 for the equal sign used to separate the key and the value
+  }, 255)
+
+  for (var n = 0; n < maxLength; n++) {
+    expected.foo += 'x'
+  }
+
+  // the max case:
+  var encoded = txtStr.encode(expected)
+  t.equal(txtStr.encode.bytes, 256)
+  var result = txtStr.decode(encoded)
+  t.deepEqual(result, expected)
+  t.equal(txtStr.decode.bytes, encoded.length)
+
+  // go beound the max:
+  expected.foo += 'x'
+  encoded = txtStr.encode(expected)
+  t.equal(txtStr.encode.bytes, 257)
+  result = txtStr.decode(encoded)
+  t.notDeepEqual(result, expected)
+  t.ok(txtStr.decode.bytes > encoded.length)
+
+  t.end()
+})
