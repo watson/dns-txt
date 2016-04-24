@@ -1,6 +1,6 @@
 {
   "name": "dns-txt",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Encode/decode DNS-SD TXT record RDATA fields",
   "main": "index.js",
   "dependencies": {
@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/watson/dns-txt",
   "coordinates": [
-    55.6665557,
-    12.5801645
+    55.6465696,
+    12.5491067
   ]
 }
