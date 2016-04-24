@@ -87,7 +87,8 @@ module.exports = function (opts) {
 
 function decodeBlock (buf, offset) {
   var len = buf[offset]
-  var b = buf.slice(offset + 1, offset + 1 + len)
+  var to = offset + 1 + len
+  var b = buf.slice(offset + 1, to > buf.length ? buf.length : to)
   decodeBlock.bytes = len + 1
   return b
 }
