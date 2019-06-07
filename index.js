@@ -47,9 +47,21 @@ module.exports = function (opts) {
   that.decode = function (buf, offset, len) {
     if (!offset) offset = 0
     if (!Number.isFinite(len)) len = buf.length
-    var data = {}
     var oldOffset = offset
+    var data = {}
+    
+    while(offset < len) {
+      offset+= buf.readUInt8(offset) + 1
+    }
+    if(offset !== len) {
+      // non-RFC-6763 compliant format. Assume RFC-1464.
+      that.decode.bytes = len - oldOffset
+      return binary ? buf.slice(oldOffset) : {
+        [buf.slice(oldOffset, buf.indexOf('=', oldOffset)).toString()]: buf.slice(buf.indexOf('=', oldOffset) + 1).toString()
+      }
+    }
 
+    offset = oldOffset;
     while (offset < len) {
       var b = decodeBlock(buf, offset)
       var i = bindexOf(b, equalSign)
