@@ -1,7 +1,5 @@
 'use strict'
 
-var bindexOf = require('buffer-indexof')
-
 var equalSign = new Buffer('=')
 
 module.exports = function (opts) {
@@ -52,7 +50,7 @@ module.exports = function (opts) {
 
     while (offset < len) {
       var b = decodeBlock(buf, offset)
-      var i = bindexOf(b, equalSign)
+      var i = b.indexOf(equalSign)
       offset += decodeBlock.bytes
 
       if (b.length === 0) continue // ignore: most likely a single zero byte
