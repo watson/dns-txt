@@ -1,12 +1,17 @@
-# dns-txt
+# dns-txt (esp8266)
+
+Based on the test-results of this lib, I would dare say **this is an
+ugly hack, do not use unless desparate!!**
+
+This has been altered from the original specifically for my own use on
+hacking around with an ESP8266 based IoT platform. Either the chip does
+something weird, or more modern impementation of node has changed how
+`Buffer.slice()` works, either way, I was losing all first-chars of my
+keys, this custom fork fixes that...
 
 Encode or decode the RDATA field in multicast DNS TXT records. For use
 with DNS-Based Service Discovery. For details see [RFC
 6763](https://tools.ietf.org/html/rfc6763).
-
-[![Build status](https://travis-ci.org/watson/dns-txt.svg?branch=master)](https://travis-ci.org/watson/dns-txt)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![abstract-encoding](https://img.shields.io/badge/abstract--encoding-compliant-brightgreen.svg?style=flat)](https://github.com/mafintosh/abstract-encoding)
 
 ## Installation
 
